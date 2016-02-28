@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>My document</title>
+	</head>
+	<body style="overflow:hidden;margin:0">
+		<canvas id="canvas" ></canvas>
+		<script>
+			(function (){
+				var height,width,canvas,x,y,R,r,g,b;
+				height = window.innerHeight;
+				width = window.innerWidth;
+				canvas = document.getElementById("canvas");
+				canvas.width = width;
+				canvas.height = height;
+				ctx = canvas.getContext("2d");
+				randomCircle();
+					function randomCircle(){
+						ctx.clearRect(0,0,width,height);
+						ctx.fillStyle = "rgb(222,222,222)"
+						ctx.fillRect(0,0,width,height);
+						for(var i=0;i<20;i++){
+							x = Math.random()*width;
+							y = Math.random()*height;
+							R = Math.random()*width*0.1;
+							r = Math.floor(Math.random()*255);
+							g = Math.floor(Math.random()*255);
+							b = Math.floor(Math.random()*255);
+							ctx.globalAlpha = 0.3;
+							ctx.fillStyle = "rgb("+r+","+g+","+b+")";
+							ctx.beginPath();
+							ctx.arc(x,y,R,0,Math.PI*2);
+							ctx.closePath();
+							ctx.fill();
+					}}
+				setInterval(randomCircle,2000);
+			})();
+		</script>
+	</body>
+</html>
+
+
